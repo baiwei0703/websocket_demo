@@ -1,29 +1,6 @@
 import asyncio
 import websockets
 import subprocess
-import json
-
-class DhcpInfo:
-    def __init__(self, scope, reserved_ip, mac_address, remark, opt_type):
-        self.scope = scope
-        self.reserved_ip = reserved_ip
-        self.mac_address = mac_address
-        self.remark = remark
-        self.opt_type = opt_type
-
-    def __repr__(self):
-        return f"DhcpInfo(scope={self.scope}, reserved_ip={self.reserved_ip}, mac_address={self.mac_address}, remark={self.remark}, opt_type={self.opt_type})"
-
-    @classmethod
-    def from_json(cls, json_str):
-        try:
-            # 将JSON字符串转为dict
-            data = json.loads(json_str)
-            # 使用dict的数据创建类实例
-            return cls(**data)
-        except TypeError:
-            return None
-
 
 async def execute_command(command):
     """执行Windows命令行命令并返回输出"""
